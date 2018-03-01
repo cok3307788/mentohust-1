@@ -20,7 +20,7 @@ static const char *DATAFILE = "/jffs/etc/mentohust/";   /* 默认数据文件(�
 ```
 然后执行./configure
 make install
-必需包：gettext gwak clang proot libiconv automake auotoconf aclocal autopoint tsu(提供运行权限)
+必需包：`gettext gwak clang proot libiconv automake auotoconf aclocal autopoint tsu(提供运行权限) libpcap`
 如果安装了足够的包，make install仍然报错，说明找不到相应的库文件，需要手动连接，同时生成的位置也要指定
 尝试使用：
 `make install LDFLAGS="/data/data/com.termux/files/usr/lib/libiconv.so -L/data/data/com.termux/files/usr/lib -WI,R/data/data/com.termux/files/usr/lib"  DESTDIR=/data/data/com.termux/files/`
