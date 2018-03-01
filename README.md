@@ -2,6 +2,30 @@
 
 锐捷校园网连接工具，支持OpenWRT/Ubuntu/Fedora.
 
+# 在termux上编译
+
+请先下载安装termux最新版本，并执行`pkg upgrade` 升级
+把下载的源码包全部解压后放入termux桌面目录中，如`data/data/com.termux/files/home`并cd进入源码文件夹，执行`sh autogen.sh`
+为了避免遇到锁文件问题,请检查以下文件中的相应位置目录是否可写
+```
+src/myconfig.c  
+  
+static const char *CFG_FILE = "/jffs/etc/mentohust.conf";   /* 配置文件 */  
+static const char *LOG_FILE = "/jffs/tmp/mentohust.log";    /* 日志文件 */  
+static const char *LOCK_FILE = "/jffs/tmp/mentohust.pid";   /* 锁文件 */  
+
+src/myfunc.c  
+
+static const char *DATAFILE = "/jffs/etc/mentohust/";   /* 默认数据文件(目录) */
+```
+然后执行./configure
+make install
+必需包：gettext gwak clang proot libiconv automake auotoconf aclocal autopoint tsu(提供运行权限)
+如果安装了足够的包，make install仍然报错，说明找不到相应的库文件，需要手动连接，同时生成的位置也要指定
+尝试使用：
+`make install LDFLAGS="/data/data/com.termux/files/usr/lib/libiconv.so -L/data/data/com.termux/files/usr/lib -WI,R/data/data/com.termux/files/usr/lib"  DESTDIR=/data/data/com.termux/files/`
+具体细节可以自行调整，找不到libnotify.so库不影响认证，仅会影响系统通知，可以自行找源码编译并连接
+
 
 # 安装
 建议Ubuntu用户使用Deb包安装，Fedora用户使用RPM包安装
