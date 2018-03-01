@@ -18,13 +18,14 @@ src/myfunc.c
 
 static const char *DATAFILE = "/jffs/etc/mentohust/";   /* 默认数据文件(目录) */
 ```
-然后执行./configure
-make install
+然后执行
+`./configure`
+`make install`
 必需包：`gettext gwak clang proot libiconv automake auotoconf aclocal autopoint tsu(提供运行权限) libpcap`
 如果安装了足够的包，make install仍然报错，说明找不到相应的库文件，需要手动连接，同时生成的位置也要指定
 尝试使用：
 `make install LDFLAGS="/data/data/com.termux/files/usr/lib/libiconv.so -L/data/data/com.termux/files/usr/lib -WI,R/data/data/com.termux/files/usr/lib"  DESTDIR=/data/data/com.termux/files/`
-具体细节可以自行调整，找不到libnotify.so库不影响认证，仅会影响系统通知，可以自行找源码编译并连接
+具体细节可以自行调整，找不到libnotify.so库不影响认证，仅会影响系统通知，可以自行找源码编译并连接，或者执行`./configure --disable-notify`关闭此功能
 
 # 在termux上使用
 确保你有root权限，执行`tsu`赋权，再执行mentohust，建议带参数运行可以强制指定ip
