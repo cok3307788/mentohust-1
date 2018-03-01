@@ -6,3 +6,4 @@ aclocal
 autoheader
 automake --add-missing
 autoconf
+autoreconf -fi
