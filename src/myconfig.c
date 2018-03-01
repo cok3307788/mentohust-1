@@ -6,6 +6,7 @@
 * 摘	要：初始化认证参数
 * 作	者：HustMoon@BYHH
 * 邮	箱：www.ehust@gmail.com
+* 更改（增加）了对应termux的工作目录：data/data/com.termux/files/usr
 */
 #ifdef HAVE_CONFIG_H
 #include "config.h"
