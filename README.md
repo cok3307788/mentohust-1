@@ -26,6 +26,8 @@ make install
 `make install LDFLAGS="/data/data/com.termux/files/usr/lib/libiconv.so -L/data/data/com.termux/files/usr/lib -WI,R/data/data/com.termux/files/usr/lib"  DESTDIR=/data/data/com.termux/files/`
 具体细节可以自行调整，找不到libnotify.so库不影响认证，仅会影响系统通知，可以自行找源码编译并连接
 
+# 在termux上使用
+确保你有root权限，执行`tsu`赋权，再执行mentohust，建议带参数运行可以强制指定ip
 
 # 安装
 建议Ubuntu用户使用Deb包安装，Fedora用户使用RPM包安装
