@@ -5,7 +5,7 @@
 # 在termux上编译
 
 请先下载安装termux最新版本，并执行`pkg upgrade` 升级
-把下载的源码包全部解压后放入termux桌面目录中，如`data/data/com.termux/files/home`并cd进入源码文件夹，执行`sh autogen.sh`
+把下载的源码包全部解压后放入termux桌面目录中，如`data/data/com.termux/files/home`并cd进入源码文件夹，执行`sh autogen.sh`再补充执行`autoreconf -fi`
 为了避免遇到锁文件问题,请检查以下文件中的相应位置目录是否可写
 ```
 src/myconfig.c  
