@@ -22,13 +22,14 @@ static const char *DATAFILE = "/jffs/etc/mentohust/";   /* 默认数据文件(�
 `./configure`
 `make install`
 必需包：`gettext gwak clang proot libiconv automake auotoconf aclocal autopoint tsu(提供运行权限) libpcap`
-如果安装了足够的包，make install仍然报错，说明找不到相应的库文件，需要手动连接，同时生成的位置也要指定
+以及以上各包的 -dev版本（如有）.如果安装了足够的包，make install仍然报错，说明找不到相应的库文件，需要手动连接，同时生成的位置也要指定
 尝试使用：
-`make install LDFLAGS="/data/data/com.termux/files/usr/lib/libiconv.so -L/data/data/com.termux/files/usr/lib -WI,R/data/data/com.termux/files/usr/lib"  DESTDIR=/data/data/com.termux/files/`
-具体细节可以自行调整，找不到libnotify.so库不影响认证，仅会影响系统通知，可以自行找源码编译并连接，或者执行`./configure --disable-notify`关闭此功能
-
+`make install LDFLAGS="/data/data/com.termux/files/usr/lib/libiconv.so -L/data/data/com.termux/files/usr/lib -WI,R/data/data/com.termux/files/usr/lib"  DESTDIR=/data/data/com.termux/files/usr/`
+具体细节可以自行调整，找不到libnotify.so库不影响认证，仅会影响系统通知，可以自行找源码编译并连接，或者执行`./configure --disable-notify`关闭此功能，必要时再加上`--disable-encodepass`
+如果出现`error: "Can't detect CPU architechture"`报错，尝试修改/src里面的
+byte_order.h文件，添加自己的CPU架构上去
 # 在termux上使用
-确保你有root权限，执行`tsu`赋权，再执行mentohust，建议带参数运行可以强制指定ip
+确保你有root权限，执行`tsu`赋权，再执行mentohust，建议带参数运行可以强制指定ip，或者使用`tsudo mentohust`
 
 # 安装
 建议Ubuntu用户使用Deb包安装，Fedora用户使用RPM包安装
